@@ -55,13 +55,13 @@ const DTFDetail = () => {
       <div>
         <h1 className="text-5xl font-bold">DTF Gang Sheets</h1>
         <p className="text-2xl font-bold py-5">$7.99 – $133.99</p>
-        <p className="text-white leading-relaxed">
+        <p className="text-slate-950 leading-relaxed">
           Upload your pre-built (ready to print) high-resolution (300dpi) gang
           sheet as a transparent PNG (Please do not mirror the images). All gang
           sheets will now be printed with our new hot peel film — just press and
           peel.
         </p>
-        <ul className="list-disc py-5 text-white space-y-1">
+        <ul className="list-disc py-5 text-slate-950 space-y-1">
           <li>Select your gang sheet size.</li>
           <li>Select your quantity.</li>
           <li>Upload your artwork.</li>
@@ -89,7 +89,7 @@ const DTFDetail = () => {
           ))}
         </div>
 
-        <p className="mt-4 text-sm text-white">
+        <p className="mt-4 text-sm text-slate-950">
           Selected:{" "}
           <span className="font-semibold">
             {selected.size} — ${selected.price.toFixed(2)}
@@ -109,7 +109,7 @@ const DTFDetail = () => {
           {options.map((opt) => (
             <label
               key={opt.id}
-              className="flex justify-between items-center text-white"
+              className="flex justify-between items-center text-slate-950"
             >
               <div className="flex items-center gap-2">
                 <input
@@ -126,7 +126,7 @@ const DTFDetail = () => {
         </div>
 
         {/* 💵 Price Summary */}
-        <div className="mt-10 text-white">
+        <div className="mt-10 text-slate-950">
           <div className="flex justify-between">
             <span>Options Amount</span>
             <span className="font-bold">${optionsTotal.toFixed(2)}</span>
@@ -150,7 +150,7 @@ const DTFDetail = () => {
             }
             className="w-16 text-center border border-gray-300 rounded-md py-2"
           />
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md transition-all">
+          <button className="bg-blue-600 hover:bg-blue-700 text-slate-950 font-semibold px-5 py-2 rounded-md transition-all">
             ADD TO CART
           </button>
         </div>

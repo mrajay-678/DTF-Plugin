@@ -62,7 +62,7 @@ const FileUploadPreview = () => {
   };
 
   return (
-    <div className="max-w-xl mt-10 bg-gray-100 shadow p-6 rounded-xl">
+    <div className=" mt-10 bg-gray-100 shadow p-6 rounded-xl">
       <h2 className="text-xl text-black font-semibold mb-2">Upload Your Artwork</h2>
       <div
         onDrop={handleDrop}
@@ -87,7 +87,7 @@ const FileUploadPreview = () => {
           <img
             src={preview}
             alt="Preview"
-            className="w-full max-h-80 object-contain rounded-md border"
+            className="w-full max-h-80 object-contain rounded-md border-dashed"
           />
 
           <div className="mt-3 text-sm text-gray-700 space-y-1">
@@ -108,7 +108,7 @@ const FileUploadPreview = () => {
       )}
 
       {/* Accordion */}
-      <div className="border-t pt-4">
+      <div className=" pt-4">
         <button
           onClick={() => setAccordionOpen(!accordionOpen)}
           className="flex justify-between items-center w-full text-left text-base font-medium text-gray-800"
