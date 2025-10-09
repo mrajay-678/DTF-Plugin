@@ -30,22 +30,16 @@ const DTFDetail = () => {
   const [finalTotal, setFinalTotal] = useState(selected.price);
 
   // 🧮 Toggle checkbox state for each extra service
-  const handleOptionChange = (id) => {
-    setOptions((prev) =>
-      prev.map((opt) =>
-        opt.id === id ? { ...opt, checked: !opt.checked } : opt
-      )
-    );
+  const handleOptionChange = id => {
+    setOptions(prev => prev.map(opt => (opt.id === id ? { ...opt, checked: !opt.checked } : opt)));
   };
 
   // 💰 Calculate total price of selected add-ons
-  const optionsTotal = options
-    .filter((opt) => opt.checked)
-    .reduce((sum, opt) => sum + opt.price, 0);
+  const optionsTotal = options.filter(opt => opt.checked).reduce((sum, opt) => sum + opt.price, 0);
 
   // 🔄 Update final total whenever size, quantity, or options change
   useEffect(() => {
-    const total = (selected.price + optionsTotal) * quantity;
+    const total = (selected.price * quantity) + optionsTotal;
     setFinalTotal(total);
   }, [selected, optionsTotal, quantity]);
 
@@ -56,10 +50,8 @@ const DTFDetail = () => {
         <h1 className="text-5xl font-bold">DTF Gang Sheets</h1>
         <p className="text-2xl font-bold py-5">$7.99 – $133.99</p>
         <p className="text-slate-950 leading-relaxed">
-          Upload your pre-built (ready to print) high-resolution (300dpi) gang
-          sheet as a transparent PNG (Please do not mirror the images). All gang
-          sheets will now be printed with our new hot peel film — just press and
-          peel.
+          Upload your pre-built (ready to print) high-resolution (300dpi) gang sheet as a transparent PNG (Please do not mirror the images). All gang sheets will now be printed with our new hot peel
+          film — just press and peel.
         </p>
         <ul className="list-disc py-5 text-slate-950 space-y-1">
           <li>Select your gang sheet size.</li>
@@ -73,16 +65,12 @@ const DTFDetail = () => {
       <div className="w-full max-w-3xl mx-auto">
         <label className="block font-semibold mb-2 text-lg">Size</label>
         <div className="flex flex-wrap gap-2">
-          {sizes.map((item) => (
+          {sizes.map(item => (
             <button
               key={item.size}
               onClick={() => setSelected(item)}
               className={`px-4 py-2 rounded-md border text-sm font-medium transition-all
-                ${
-                  selected.size === item.size
-                    ? "bg-black text-white border-black"
-                    : "bg-white text-black border-gray-300 hover:border-black"
-                }`}
+                ${selected.size === item.size ? "bg-black text-white border-black" : "bg-white text-black border-gray-300 hover:border-black"}`}
             >
               {item.size}
             </button>
@@ -106,7 +94,7 @@ const DTFDetail = () => {
 
         {/* Checkboxes for optional services */}
         <div className="space-y-3">
-          {options.map((opt) => (
+          {options.map(opt => (
             <label
               key={opt.id}
               className="flex justify-between items-center text-slate-950"
@@ -115,12 +103,13 @@ const DTFDetail = () => {
                 <input
                   type="checkbox"
                   checked={opt.checked}
-                  onChange={() => handleOptionChange(opt.id)}
+                  value={opt.price}
                   className="w-4 h-4 accent-blue-600"
+                  onChange={() => handleOptionChange(opt.id)}
                 />
                 <span>{opt.name}</span>
               </div>
-              <span className="font-medium">${opt.price.toFixed(2)}</span>
+              <span className="font-medium">${opt.price}</span>
             </label>
           ))}
         </div>
@@ -133,9 +122,7 @@ const DTFDetail = () => {
           </div>
           <div className="flex justify-between mt-2">
             <span>Final Total</span>
-            <span className="font-bold text-lg">
-              ${finalTotal.toFixed(2)}
-            </span>
+            <span className="font-bold text-lg">${finalTotal.toFixed(2)}</span>
           </div>
         </div>
 
@@ -145,14 +132,10 @@ const DTFDetail = () => {
             type="number"
             min="1"
             value={quantity}
-            onChange={(e) =>
-              setQuantity(Math.max(1, parseInt(e.target.value) || 1))
-            }
+            onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
             className="w-16 text-center border border-gray-300 rounded-md py-2"
           />
-          <button className="bg-blue-600 hover:bg-blue-700 text-slate-950 font-semibold px-5 py-2 rounded-md transition-all">
-            ADD TO CART
-          </button>
+          <button className="bg-blue-600 hover:bg-blue-700 text-slate-950 font-semibold px-5 py-2 rounded-md transition-all">ADD TO CART</button>
         </div>
       </div>
     </div>
